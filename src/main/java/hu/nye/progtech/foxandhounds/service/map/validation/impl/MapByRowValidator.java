@@ -8,6 +8,11 @@ import hu.nye.progtech.foxandhounds.service.map.validation.MapValidator;
 import hu.nye.progtech.foxandhounds.service.util.CollectionUtil;
 import hu.nye.progtech.foxandhounds.service.util.MapUtil;
 
+/**
+ * TODO
+ * Validates the rows of a map. Each row should contain distinct values.
+ * TODO
+ */
 public class MapByRowValidator implements MapValidator {
 
     private final MapUtil mapUtil;
@@ -27,8 +32,10 @@ public class MapByRowValidator implements MapValidator {
             List<Integer> rowOfMap = mapUtil.getRowOfMap(mapVO, i);
             List<Integer> nonZeroValues = collectionUtil.collectNonZeroValues(rowOfMap);
 
-            if(!collectionUtil.containsOnlyDistinctValues(nonZeroValues)){
+            if (!collectionUtil.containsOnlyDistinctValues(nonZeroValues)) {
                 throw new MapValidationException("invalid row");
+
+                //TODO nem kompatibilis foxandhounds-al
             }
         }
     }

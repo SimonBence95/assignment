@@ -1,4 +1,5 @@
 package hu.nye.progtech.foxandhounds.service.map.reader.impl;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,6 +8,10 @@ import java.util.List;
 import hu.nye.progtech.foxandhounds.service.exception.MapReadException;
 import hu.nye.progtech.foxandhounds.service.map.reader.MapReader;
 
+/**
+ * {@link MapReader} implementation that reads the raw representation of
+ * a map from a {@link BufferedReader} source.
+ */
 public class BufferedReaderMapReader implements MapReader {
 
     private final BufferedReader reader;
@@ -19,7 +24,7 @@ public class BufferedReaderMapReader implements MapReader {
     public List<String> read() {
 
         String line;
-        List<String>result = new ArrayList<>();
+        List<String> result = new ArrayList<>();
 
         try {
             while ((line = reader.readLine()) != null) {

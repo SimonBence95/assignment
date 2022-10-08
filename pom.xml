@@ -74,8 +74,9 @@
                     <excludes>
                         <exclude>hu/nye/progtech/foxandhounds/model/*</exclude>
                         <exclude>hu/nye/progtech/foxandhounds/Main.*</exclude>
-                        <exclude>hu/nye/progtech/foxandhounds/ui/PrintWrapper.*</exclude>
-                        <exclude>hu/nye/progtech/foxandhounds/expection/*</exclude>
+                        <exclude>hu/nye/progtech/foxandhounds/service/exception/*</exclude>
+                        <exclude>hu/nye/progtech/foxandhounds/service/map/writer/*</exclude>
+                        <exclude>hu/nye/progtech/foxandhounds/impl/command</exclude>
                     </excludes>
                 </configuration>
                 <executions>
@@ -91,7 +92,7 @@
                             <goal>report</goal>
                         </goals>
                     </execution>
-                    <!-- TODO: Ne felejtsd el visszavonni a kommentelÃ©st!
+
 <execution>
     <id>jacoco-check</id>
     <goals>
@@ -112,7 +113,7 @@
         </rules>
     </configuration>
 </execution>
--->
+
                 </executions>
             </plugin>
             <plugin>
@@ -139,7 +140,7 @@
                     </dependency>
                 </dependencies>
                 <executions>
-                    <!-- TODO: Ne felejtsd el visszavonni a kommentelÃ©st!
+
  <execution>
      <id>validate</id>
      <phase>validate</phase>
@@ -147,7 +148,7 @@
          <goal>check</goal>
      </goals>
  </execution>
- -->
+
                 </executions>
             </plugin>
         </plugins>

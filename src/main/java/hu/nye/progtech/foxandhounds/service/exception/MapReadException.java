@@ -1,6 +1,9 @@
 package hu.nye.progtech.foxandhounds.service.exception;
 
-public class MapReadException extends RuntimeException{
+/**
+ * Exception that should be thrown when the reading of a map fails.
+ */
+public class MapReadException extends RuntimeException {
 
     public MapReadException(String message) {
         super(message);
