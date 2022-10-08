@@ -23,19 +23,20 @@ public class CollectionUtil {
                 result.add(value);
             }
         }
-
         return result;
     }
-
+    /*
     /**
      * Checks if a given list only contains distinct values.
      *
      * @param integerList the integer list to check
      * @return {@code true} if the list only contains distinct values, {@code false} otherwise
      */
+    /*TODO lehet hogy nem kell a foxandhounds-oshoz!
     public boolean containsOnlyDistinctValues(List<Integer> integerList) {
         Set<Integer> distinctValues = Set.copyOf(integerList);
         return integerList.size() == distinctValues.size();
     }
+     */
 
 }

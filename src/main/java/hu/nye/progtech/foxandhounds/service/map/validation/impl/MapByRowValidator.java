@@ -28,15 +28,16 @@ public class MapByRowValidator implements MapValidator {
         int numberOfRows = mapVO.getNumberOfColumns();
 
 
-        for (int i = 0; i < numberOfRows; i++) {
+            for (int i = 0; i < numberOfRows; i++) {
             List<Integer> rowOfMap = mapUtil.getRowOfMap(mapVO, i);
             List<Integer> nonZeroValues = collectionUtil.collectNonZeroValues(rowOfMap);
 
-            if (!collectionUtil.containsOnlyDistinctValues(nonZeroValues)) {
+            /*if (!collectionUtil.containsOnlyDistinctValues(nonZeroValues)) {
                 throw new MapValidationException("invalid row");
 
                 //TODO nem kompatibilis foxandhounds-al
+
+             */
             }
         }
     }
-}

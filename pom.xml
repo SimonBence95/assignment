@@ -76,7 +76,9 @@
                         <exclude>hu/nye/progtech/foxandhounds/Main.*</exclude>
                         <exclude>hu/nye/progtech/foxandhounds/service/exception/*</exclude>
                         <exclude>hu/nye/progtech/foxandhounds/service/map/writer/*</exclude>
-                        <exclude>hu/nye/progtech/foxandhounds/impl/command</exclude>
+                        <exclude>hu/nye/progtech/foxandhounds/command/*</exclude>
+                        <exclude>hu/nye/progtech/foxandhounds/command/impl/*</exclude>
+                        <exclude>hu/nye/progtech/foxandhounds/service/validation/imp/MapByRowValidator</exclude>
                     </excludes>
                 </configuration>
                 <executions>

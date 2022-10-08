@@ -46,7 +46,7 @@ public class MainWriter {
         String valasztas = scanner.nextLine();
 
         switch (valasztas) {
-            case "username":
+            case "alias":
                 System.out.print("username: ");
                 String name = scanner.nextLine();
                 System.out.println("Welcome to the fox and hounds game: " + name);
