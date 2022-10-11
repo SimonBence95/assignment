@@ -24,7 +24,6 @@ public class InputHandler {
         for (Command command : commandList) {
             if (command.canProcess(input)) {
                 command.process(input);
-                break;
             }
         }
     }

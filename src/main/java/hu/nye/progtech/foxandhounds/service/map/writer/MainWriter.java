@@ -1,18 +1,33 @@
 package hu.nye.progtech.foxandhounds.service.map.writer;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 import hu.nye.progtech.foxandhounds.Main;
-import hu.nye.progtech.foxandhounds.command.impl.DefaultCommand;
+import hu.nye.progtech.foxandhounds.command.Command;
+import hu.nye.progtech.foxandhounds.command.InputHandler;
+import hu.nye.progtech.foxandhounds.command.impl.ExitCommand;
+import hu.nye.progtech.foxandhounds.command.impl.PrintCommand;
+import hu.nye.progtech.foxandhounds.command.impl.PutCommand;
+import hu.nye.progtech.foxandhounds.model.GameState;
 import hu.nye.progtech.foxandhounds.model.MapVO;
+import hu.nye.progtech.foxandhounds.service.game.GameController;
+import hu.nye.progtech.foxandhounds.service.game.GameStepPerformer;
+import hu.nye.progtech.foxandhounds.service.input.UserInputReader;
+import hu.nye.progtech.foxandhounds.service.map.MapReaderFacade;
 import hu.nye.progtech.foxandhounds.service.map.parser.MapParser;
 import hu.nye.progtech.foxandhounds.service.map.reader.MapReader;
 import hu.nye.progtech.foxandhounds.service.map.reader.impl.BufferedReaderMapReader;
+import hu.nye.progtech.foxandhounds.service.map.validation.MapValidator;
+import hu.nye.progtech.foxandhounds.service.map.validation.impl.MapByRowValidator;
+import hu.nye.progtech.foxandhounds.service.performer.PutPerformer;
 import hu.nye.progtech.foxandhounds.service.util.MapUtil;
+import hu.nye.progtech.foxandhounds.ui.MapPrinter;
+import hu.nye.progtech.foxandhounds.ui.PrintWrapper;
 
 /**
  * Class that helps Main class write correct values.
@@ -22,45 +37,45 @@ public class MainWriter {
     /**
      * Set the proper args in Main.
      */
-    public void SetArgs() {
+    public void SetArgs() throws IOException {
 
         InputStream inputStream = Main.class.getClassLoader().getResourceAsStream("map/beginnerMap.txt");
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         MapReader mapReader = new BufferedReaderMapReader(reader);
-        List<String> rawMap = mapReader.read();
 
-        MapParser mapParser = new MapParser(8,8);
-        MapVO mapVO = mapParser.parse(rawMap);
+        MapParser mapParser = new MapParser(8, 8);
 
-        MapUtil mapUtil = new MapUtil();
+        MapUtil maputil = new MapUtil();
+
+        MapValidator mapValidator = new MapByRowValidator(maputil);
+
+        MapReaderFacade mapReaderFacade = new MapReaderFacade(mapReader, mapParser, mapValidator);
+        MapVO mapVO = mapReaderFacade.readMap();
+
+        GameState gameState = new GameState(mapVO,false);
+
+        BufferedReader standardInputReader = new BufferedReader(new InputStreamReader(System.in));
+
+        UserInputReader userInputReader = new UserInputReader(standardInputReader);
+
         PrintWrapper printWrapper = new PrintWrapper();
+        MapPrinter mapPrinter = new MapPrinter(1,1,maputil,printWrapper);
 
-        DefaultCommand defaultCommand = new DefaultCommand(printWrapper);
+        PutPerformer putPerformer = new PutPerformer();
 
-        MapPrinter mapPrinter = new MapPrinter(mapVO.getNumberOfRows(),mapVO.getNumberOfColumns(), mapUtil,printWrapper);
+        List<Command> commandList = Arrays.asList(
+                new PrintCommand(mapPrinter,gameState),
+                new PutCommand(gameState,putPerformer,mapValidator),
+                new ExitCommand(gameState)
+        );
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please select option: Display game-field[dgf],Select username [alias], Start Game [start] ");
-        System.out.print("Chosen option: ");
-        String valasztas = scanner.nextLine();
+        InputHandler inputHandler = new InputHandler(commandList);
 
-        switch (valasztas) {
-            case "alias":
-                System.out.print("username: ");
-                String name = scanner.nextLine();
-                System.out.println("Welcome to the fox and hounds game: " + name);
-                break;
-            case "dgf":
-                mapPrinter.printMap(mapVO);
-                break;
-            case "start":
-                mapPrinter.printMap(mapVO);
-                break;
-            default:
-                defaultCommand.process("");
-        }
+        GameStepPerformer gameStepPerformer = new GameStepPerformer(userInputReader, inputHandler);
 
+        GameController gameController = new GameController(gameState,maputil,gameStepPerformer);
+        gameController.gameLoop();
 
 
     }

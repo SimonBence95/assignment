@@ -25,6 +25,10 @@ public class MapParser {
      * @return a parsed map as a {@link MapVO} object
      */
     public MapVO parse(List<String> rawMap) {
+        checkNumberOfRows(rawMap);
+        checkNumberOfColumns(rawMap);
+
+
         int[][] values = getValues(rawMap);
         boolean[][] fixed = getFixed(values);
 
@@ -64,6 +68,14 @@ public class MapParser {
     private void checkNumberOfRows(List<String> rawMap) {
         if (rawMap.size() != numberOfRows) {
             throw new MapParseException("Number of rows are incorrect, it was " + rawMap.size());
+        }
+    }
+
+    private void checkNumberOfColumns(List<String> rows) throws MapParseException {
+        for (String row : rows) {
+            if (row.length() != numberOfColumns) {
+                throw new MapParseException("Number of columns must be " + numberOfColumns);
+            }
         }
     }
 

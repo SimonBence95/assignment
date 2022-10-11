@@ -1,4 +1,4 @@
-package hu.nye.progtech.foxandhounds.service.map.writer;
+package hu.nye.progtech.foxandhounds.ui;
 
 import java.util.ArrayList;
 import java.util.List;

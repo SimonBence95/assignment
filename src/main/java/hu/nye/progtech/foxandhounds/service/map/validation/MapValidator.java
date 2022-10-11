@@ -7,6 +7,6 @@ import hu.nye.progtech.foxandhounds.model.MapVO;
  */
 public interface MapValidator {
 
-    void validate(MapVO mapVO);
+    MapVO validate(MapVO mapVO);
 
 }

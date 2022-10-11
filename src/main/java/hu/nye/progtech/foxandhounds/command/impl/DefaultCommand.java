@@ -1,7 +1,7 @@
 package hu.nye.progtech.foxandhounds.command.impl;
 
 import hu.nye.progtech.foxandhounds.command.Command;
-import hu.nye.progtech.foxandhounds.service.map.writer.PrintWrapper;
+import hu.nye.progtech.foxandhounds.ui.PrintWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

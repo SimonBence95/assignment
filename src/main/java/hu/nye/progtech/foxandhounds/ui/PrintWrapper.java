@@ -1,4 +1,4 @@
-package hu.nye.progtech.foxandhounds.service.map.writer;
+package hu.nye.progtech.foxandhounds.ui;
 
 /**
  * Util class used to wrap operations that print to stdout.
