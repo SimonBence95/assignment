@@ -16,7 +16,7 @@ public class MapPrinter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MapPrinter.class);
 
-    private static final String HORIZONTAL_SEPARATOR = "*";
+    private static final String HORIZONTAL_SEPARATOR = "=";
     private static final String VERTICAL_THIN_SEPARATOR = " | ";
     private static final String VERTICAL_THICK_SEPARATOR = " || ";
     private static final String LEFT_SIDE_VERTICAL_THICK_SEPARATOR = "|| ";
