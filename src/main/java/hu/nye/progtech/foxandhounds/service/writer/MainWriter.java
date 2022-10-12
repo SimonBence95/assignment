@@ -1,4 +1,4 @@
-package hu.nye.progtech.foxandhounds.service.map.writer;
+package hu.nye.progtech.foxandhounds.service.writer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,12 +30,13 @@ import hu.nye.progtech.foxandhounds.ui.MapPrinter;
 import hu.nye.progtech.foxandhounds.ui.PrintWrapper;
 
 /**
- * Class that helps Main class write correct values.
+ * {@summary <p>This is for my @Main.class. <p/>}
  */
+
 public class MainWriter {
 
     /**
-     * Set the proper args in Main.
+     * Method to set the proper args in Main.
      */
     public void SetArgs() throws IOException {
 
