@@ -27,9 +27,10 @@ public class DefaultCommand implements Command {
     }
 
     @Override
-    public void process(String input) {
+    public String process(String input) {
         LOGGER.info("Performing default command");
         printWrapper.printLine(UNKNOWN_COMMAND_MESSAGE);
+        return input;
     }
 
 }

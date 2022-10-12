@@ -11,6 +11,7 @@ import hu.nye.progtech.foxandhounds.Main;
 import hu.nye.progtech.foxandhounds.command.Command;
 import hu.nye.progtech.foxandhounds.command.InputHandler;
 import hu.nye.progtech.foxandhounds.command.impl.ExitCommand;
+import hu.nye.progtech.foxandhounds.command.impl.NameCommand;
 import hu.nye.progtech.foxandhounds.command.impl.PrintCommand;
 import hu.nye.progtech.foxandhounds.command.impl.PutCommand;
 import hu.nye.progtech.foxandhounds.model.GameState;
@@ -66,6 +67,7 @@ public class MainWriter {
         PutPerformer putPerformer = new PutPerformer();
 
         List<Command> commandList = Arrays.asList(
+                new NameCommand(gameState),
                 new PrintCommand(mapPrinter,gameState),
                 new PutCommand(gameState,putPerformer,mapValidator),
                 new ExitCommand(gameState)

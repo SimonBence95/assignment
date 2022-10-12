@@ -17,8 +17,7 @@ public interface Command {
     /**
      * Processes the given input.
      *
-     * @param input the input as a string to be processed
+     * @param input the input as a string to be processed.
      */
-    void process(String input);
-
+    String process(String input);
 }
