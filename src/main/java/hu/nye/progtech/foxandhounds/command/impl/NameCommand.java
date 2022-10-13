@@ -1,6 +1,5 @@
 package hu.nye.progtech.foxandhounds.command.impl;
 
-import java.io.InputStream;
 import java.util.Scanner;
 
 import hu.nye.progtech.foxandhounds.command.Command;
