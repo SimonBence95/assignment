@@ -1,4 +1,4 @@
-package hu.nye.progtech.foxandhounds.command.impl;
+package hu.nye.progtech.foxandhounds.service.writer;
 
 import java.util.Scanner;
 
@@ -10,9 +10,9 @@ import org.slf4j.LoggerFactory;
 /**
  * Command used to set username.
  */
-public class NameCommand implements Command {
+public class NameWriter implements Command {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(NameCommand.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(NameWriter.class);
 
     private static String NAME_COMMAND = "name";
 
@@ -20,7 +20,7 @@ public class NameCommand implements Command {
 
     Scanner scanner = new Scanner(System.in);
 
-    public NameCommand(GameState gameState) {
+    public NameWriter(GameState gameState) {
         this.gameState = gameState;
     }
 
@@ -32,10 +32,12 @@ public class NameCommand implements Command {
 
     @Override
     public String process(String input) {
+
         LOGGER.info("Getting username");
         System.out.print("username: ");
         input = scanner.nextLine();
         System.out.println("Welcome to the fox and hounds game: " + input);
         return input;
+
     }
 }
